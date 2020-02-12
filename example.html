@@ -34,7 +34,7 @@
 
     //// test 测试KPromise的then、catch方法 end
 
-    //// test 测试静态方法resolve、reject、all    start
+    //// test 测试静态方法resolve、reject、all、race    start
     // KPromise.resolve('你好').then(res=>{
     //     console.log(`%c静态方法：KPromise.resolve调用输出：${res}`,'color:green;');
     // });
@@ -64,8 +64,9 @@
         },500);
     });
 
-    KPromise.all([p1,p2,p3]).then(res=>console.log(res)).catch(reason=>console.log(`KPromise.all报错:${reason}`));
-    //// test 测试静态方法resolve、reject、all    end
+    KPromise.all([p1,p2,p3]).then(res=>console.log('KPromise.all:',res)).catch(reason=>console.log(`KPromise.all报错:${reason}`));
+    KPromise.race([p1,p2,p3]).then(res=>console.log('KPromise.race:',res)).catch(reason=>console.log(`KPromise.race报错:${reason}`));
+    //// test 测试静态方法resolve、reject、all、race    end
 
     //// test async-await调用方式测试 start
     (async ()=>{
