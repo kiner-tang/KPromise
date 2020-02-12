@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="module">
+    import KPromise from './src/KPromise.js';
+
+    //// test 测试KPromise的then、catch方法 start
+
+    // let p1 = new KPromise((resolve, reject) => {
+    //     let num = Math.random();
+    //     setTimeout(() => {
+    //         num > 0.5 ? resolve('hello') : reject('报错啦');
+    //     }, 2000);
+    // });
+    //
+    // p1.then(res => {
+    //     console.log(res);
+    //     return `then1:${res}`;
+    // }).then(res => {
+    //     console.log(res);
+    //     return `then2:${res}`;
+    // }, reason => {
+    //     console.log(`onRejected----->${reason}`);
+    // });
+    // console.log(p1);
+    // setTimeout(() => {
+    //     p1.then(res => console.log('--->', res));
+    // }, 3000);
+
+    //// test 测试KPromise的then、catch方法 end
+
+    //// test 测试静态方法resolve、reject、all    start
+    // KPromise.resolve('你好').then(res=>{
+    //     console.log(`%c静态方法：KPromise.resolve调用输出：${res}`,'color:green;');
+    // });
+    // KPromise.reject('这是个错误').catch(res=>{
+    //     console.log(`%c静态方法：KPromise.reject调用输出：${res}`,'color: red;');
+    // });
+
+    // let p1 = new KPromise((resolve, reject)=>{
+    //     setTimeout(()=>{
+    //         console.log(`p1`);
+    //         resolve('p1完成');
+    //     },1000);
+    // });
+    //
+    // let p2 = new KPromise((resolve, reject)=>{
+    //     let num = Math.random();
+    //     setTimeout(()=>{
+    //         console.log(`p2`);
+    //         num<0.5?reject('p2报错'):resolve('p2成功');
+    //     },2000);
+    // });
+    // let p3 = new KPromise((resolve, reject)=>{
+    //     setTimeout(()=>{
+    //         console.log(`p3`);
+    //         resolve('p3完成');
+    //     },3000);
+    // });
+    //
+    // KPromise.all([p1,p2,p3]).then(res=>console.log(res)).catch(reason=>console.log(`KPromise.all报错:${reason}`));
+    //// test 测试静态方法resolve、reject、all    end
+
+    //// test async-await调用方式测试 start
+    (async ()=>{
+        try{
+            let res = await new KPromise((resolve, reject) => {
+                let num = Math.random();
+                console.log(num);
+                setTimeout(()=>{
+
+                    num>0.5?resolve('hello'):reject('报错啦');
+                },2000);
+
+            }).then(res=>`then1:${res}`);
+            console.log(res);
+        }catch (e) {
+            console.log('async 报错了',e);
+        }
+    })();
+    //// test async-await调用方式测试 end
+</script>
+
+</body>
+</html>
