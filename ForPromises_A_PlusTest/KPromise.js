@@ -228,17 +228,18 @@ class KPromise {
      */
     static all(promises){
         return new KPromise((resolve, reject)=>{
-            // 用于处于完成态的结果
-            let arr = [];
+            // 用于处于完成态的结果,为了确保结果数组的顺序跟传入的promises的顺序相对应，使用WeakMap对象进行存储，使用promises中的每一个promise作为key
+            let map = new WeakMap(),count = 0;
             // 循环数组，在每一个promise对象的then中将其结果加入到arr中
             let i = promises.length;
             while (i--){
                 let p = promises[i];
                 p.then(res=>{
-                    arr.push(res);
+                    map.set(p, res);
+                    count++;
                     // 当完成态结果的数量与promises数组的长度相等时，说明所有promise都成功了，直接resolve,并将暂存的完成态结果数组当做参数传递股偶去
-                    if(arr.length===promises.length){
-                        resolve(arr);
+                    if(count===promises.length){
+                        resolve(promises.map(key=>map.get(key)));
                     }
                 }).catch(reason=>{
                     // 如果失败使用reject退出
