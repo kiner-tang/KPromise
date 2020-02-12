@@ -22,3 +22,7 @@
 
 ​		我们要实现一个Promise类的话，需要遵循一定的规范，这样才能让使用者没有任何门槛的像在使用原生的Promise一样的使用自定义的Promise,而这个规范就是 `promise/A+` 规范。关于 `promise/A+` 的详细内容，可以到 [promiseaplus.com](https://promisesaplus.com/) 阅读其文档。
 
+## promise/A+ 测试通过
+
+![pass](./pass.jpg)
+
