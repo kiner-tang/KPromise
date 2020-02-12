@@ -1,5 +1,5 @@
 # KPromise
-实现Promise功能
+实现一个符合promise/A+的自定义Promise类
 
 ## 目录结构
 
