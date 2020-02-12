@@ -8,7 +8,6 @@ class KPromise {
             warn(`KPromise实例化时必须传入一个函数作为参数,当前传入参数类型为：${typeof handle}`);
             return;
         }
-        this.handler = handle;
         // 内置状态
         this.status = STATUS.PENDING;
         // 成功回调调用栈
