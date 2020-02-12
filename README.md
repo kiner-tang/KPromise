@@ -6,15 +6,15 @@
 ```bash
 .
 ├── ForPromises_A_PlusTest  用于测试KPromise是否符合"promise/A+"规范，采用commonjs的模块导出方式，代码实际上与src里并无区别
-│   ├── KPromise.js					KPromise主文件入口
-│   ├── constants.js				状态常量的定义
-│   └── utils.js						一些工具函数
+│   ├── KPromise.js         KPromise主文件入口
+│   ├── constants.js        状态常量的定义
+│   └── utils.js            一些工具函数
 ├── README.md
-├── example.html						用于测试的实例页面
-└── src											采用的是ES6的模块引入规范，即（export/import）,可直接在现代浏览器中使用
-    ├── KPromise.js					KPromise主文件入口
-    ├── constants.js				状态常量的定义
-    └── utils.js						一些工具函数
+├── example.html            用于测试的实例页面
+└── src                     采用的是ES6的模块引入规范，即（export/import）,可直接在现代浏览器中使用
+    ├── KPromise.js         KPromise主文件入口
+    ├── constants.js        状态常量的定义
+    └── utils.js            一些工具函数
 
 ```
 
